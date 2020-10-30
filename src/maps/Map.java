@@ -67,10 +67,6 @@ class MapException extends Exception {
     }
 }
 
-
-
-
-
 public class Map {
         private String mapName;
         private Scale mapScale;

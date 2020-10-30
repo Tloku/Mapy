@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class MapConsoleApp {
 
-    private static final String AUTHOR =
+    public static final String AUTHOR =
             "Imię: Dominik \n" +
             "Nazwisko: Tłokiński \n" +
             "Kierunek: ITE \n " +
