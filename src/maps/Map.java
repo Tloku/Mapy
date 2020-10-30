@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 /**
- *
+ *  Zawartość: Klasa enum Scale, Publisher, klasa MapException, klasa Map
  *  Autor: Dominik Tłokiński
  *  Nr indeksu: 252689
  *  Data: październik 2020
@@ -205,7 +205,7 @@ public class Map {
             if(mapPrize == null || mapPrize.equals(""))
                 setPrize(0);
             try{
-                setPrize(Integer.parseInt(mapPrize));
+                setPrize(Float.parseFloat(mapPrize));
             }
             catch (NumberFormatException e) {
                 throw new MapException("Nie rozpoznano liczby");
@@ -219,7 +219,7 @@ public class Map {
 
         public static void printToFile(PrintWriter writer, Map map)
         {
-            writer.println(map.getName() + "|" + map.getHeight() + "|" + map.getWidth() + "|" + map.getPrize() + "|" + map.getScale() + "|" + map.getPublisher());
+            writer.println(map.getName() + "," + map.getHeight() + "," + map.getWidth() + "," + map.getPrize() + "," + map.getScale() + "," + map.getPublisher());
         }
 
 
@@ -236,7 +236,7 @@ public class Map {
         {
             try{
                 String line = reader.readLine();
-                String[] txt = line.split("|");
+                String[] txt = line.split(",");
                 Map map = new Map(txt[0], txt[1], txt[2], txt[3]);
                 map.setScale(txt[4]);
                 map.setPublisher(txt[5]);
@@ -250,7 +250,8 @@ public class Map {
         public static Map readFromFile(String fileName) throws MapException
         {
             try (BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)))){
-                return Map.readFromFile(reader);
+                Map map = Map.readFromFile(reader);
+                return map;
             } catch (FileNotFoundException e) {
                 throw new MapException("Nie odnaleziono pliku " + fileName +"!");
             } catch(IOException e) {

@@ -3,7 +3,7 @@ package maps;/*
  *          w prostych aplikacjach bez graficznego interfejsu u�ytkownika.
  *    Plik: ConsoleUserDialog.java
  *          
- *   Autor: Pawe� Rogalinski
+ *   Autor: Paweł Rogalinski
  *    Data: pazdziernik 2018 r.
  *
  */

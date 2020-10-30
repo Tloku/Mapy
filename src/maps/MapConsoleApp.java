@@ -3,6 +3,7 @@ package maps;
 import java.util.Arrays;
 
 /**
+ * Zawartość: Klasa MapConsoleApp
  * Autor: Dominik Tłokiński
  * Nr indeksu: 252689
  * Data: październik 2020 r.
@@ -173,17 +174,6 @@ public class MapConsoleApp {
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
