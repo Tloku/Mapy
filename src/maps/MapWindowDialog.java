@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 public class MapWindowDialog extends JDialog
 {
-    private final Map map;
+    private Map map;
 
     JLabel mapNameLabel = new JLabel("Nazwa mapy");
     JLabel mapWidthLabel = new JLabel("Szerokość");
@@ -58,34 +58,8 @@ public class MapWindowDialog extends JDialog
             mapPrizeTextField.setText(String.valueOf(map.getPrize()));
         }
 
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    if(map == null)
-                        new Map(mapNameTextField.getText(), mapHeightTextField.getText(), mapWidthTextField.getText(), mapPrizeTextField.getText());
-                    else{
-                        map.setName(mapNameTextField.getText());
-                        map.setHeight(mapHeightTextField.getText());
-                        map.setWidth(mapWidthTextField.getText());
-                        map.setPrize(mapPrizeTextField.getText());
-                    }
-                    map.setScale((Scale) mapScaleJBox.getSelectedItem());
-                    map.setPublisher((Publisher) mapPublisherJBox.getSelectedItem());
-                }
-                catch(MapException ex)
-                {
-                    JOptionPane.showMessageDialog(getParent(), "Nie udało się edytować mapy");
-                }
-            }
-        });
-
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        okButton.addActionListener(e -> okButtonActionListener());
+        cancelButton.addActionListener(e -> cancelButtonActionListener());
 
         GroupLayout layout = new GroupLayout(this.getContentPane());
         this.getContentPane().setLayout(layout);
@@ -135,8 +109,10 @@ public class MapWindowDialog extends JDialog
         );
 
         this.setSize(200,200);
+        this.pack();
         this.setLocationRelativeTo(getParent());
         this.setDefaultCloseOperation(2);
+        this.setVisible(true);
     }
 
 
@@ -150,5 +126,30 @@ public class MapWindowDialog extends JDialog
     public static void changeMapData(Window parent, Map map)
     {
         new MapWindowDialog(parent, map);
+    }
+
+    void okButtonActionListener()
+    {
+        try{
+            if(map == null)
+                map = new Map(mapNameTextField.getText(), mapHeightTextField.getText(), mapWidthTextField.getText(), mapPrizeTextField.getText());
+            else{
+                map.setName(mapNameTextField.getText());
+                map.setHeight(Integer.parseInt(mapHeightTextField.getText()));
+                map.setWidth(Integer.parseInt(mapWidthTextField.getText()));
+                map.setPrize(Float.parseFloat(mapPrizeTextField.getText()));
+            }
+            map.setScale((Scale) mapScaleJBox.getSelectedItem());
+            map.setPublisher((Publisher) mapPublisherJBox.getSelectedItem());
+        }
+        catch(MapException ex)
+        {
+            JOptionPane.showMessageDialog(getParent(), "Nie udało się edytować mapy");
+        }
+    }
+
+    void cancelButtonActionListener()
+    {
+        dispose();
     }
 }

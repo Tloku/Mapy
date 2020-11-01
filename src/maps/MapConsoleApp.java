@@ -1,5 +1,6 @@
 package maps;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -9,12 +10,12 @@ import java.util.Arrays;
  * Data: październik 2020 r.
  */
 
-public class MapConsoleApp {
+public class MapConsoleApp implements Serializable {
 
     public static final String AUTHOR =
             "Imię: Dominik \n" +
             "Nazwisko: Tłokiński \n" +
-            "Kierunek: ITE \n " +
+            "Kierunek: ITE\n " +
             "Numer indeksu: 252689 \n";
 
     private static final String GREETING_MESSAGE =

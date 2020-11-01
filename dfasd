@@ -1,0 +1,904 @@
+[1mdiff --git a/cvdgb b/cvdgb[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m
+[1mdiff --git a/out/production/Mapy/maps/Map.class b/out/production/Mapy/maps/Map.class[m
+[1mindex 7f0f183..f2af323 100644[m
+Binary files a/out/production/Mapy/maps/Map.class and b/out/production/Mapy/maps/Map.class differ
+[1mdiff --git a/out/production/Mapy/maps/MapConsoleApp.class b/out/production/Mapy/maps/MapConsoleApp.class[m
+[1mindex 31a7b69..314022e 100644[m
+Binary files a/out/production/Mapy/maps/MapConsoleApp.class and b/out/production/Mapy/maps/MapConsoleApp.class differ
+[1mdiff --git a/out/production/Mapy/maps/MapException.class b/out/production/Mapy/maps/MapException.class[m
+[1mindex 65d689d..d759793 100644[m
+Binary files a/out/production/Mapy/maps/MapException.class and b/out/production/Mapy/maps/MapException.class differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$1.class b/out/production/Mapy/maps/MapWindowApp$1.class[m
+[1mdeleted file mode 100644[m
+[1mindex 6df1918..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$1.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$2.class b/out/production/Mapy/maps/MapWindowApp$2.class[m
+[1mdeleted file mode 100644[m
+[1mindex 89f7d81..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$2.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$3.class b/out/production/Mapy/maps/MapWindowApp$3.class[m
+[1mdeleted file mode 100644[m
+[1mindex 4007e39..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$3.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$4.class b/out/production/Mapy/maps/MapWindowApp$4.class[m
+[1mdeleted file mode 100644[m
+[1mindex 2f5f716..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$4.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$5.class b/out/production/Mapy/maps/MapWindowApp$5.class[m
+[1mdeleted file mode 100644[m
+[1mindex feace82..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$5.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$6.class b/out/production/Mapy/maps/MapWindowApp$6.class[m
+[1mdeleted file mode 100644[m
+[1mindex 456e08e..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$6.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp$7.class b/out/production/Mapy/maps/MapWindowApp$7.class[m
+[1mdeleted file mode 100644[m
+[1mindex 44c7273..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowApp$7.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowApp.class b/out/production/Mapy/maps/MapWindowApp.class[m
+[1mindex 4def883..5f150aa 100644[m
+Binary files a/out/production/Mapy/maps/MapWindowApp.class and b/out/production/Mapy/maps/MapWindowApp.class differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowDialog$1.class b/out/production/Mapy/maps/MapWindowDialog$1.class[m
+[1mdeleted file mode 100644[m
+[1mindex f5730ce..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowDialog$1.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowDialog$2.class b/out/production/Mapy/maps/MapWindowDialog$2.class[m
+[1mdeleted file mode 100644[m
+[1mindex 1b1e02d..0000000[m
+Binary files a/out/production/Mapy/maps/MapWindowDialog$2.class and /dev/null differ
+[1mdiff --git a/out/production/Mapy/maps/MapWindowDialog.class b/out/production/Mapy/maps/MapWindowDialog.class[m
+[1mindex 5474a12..6355f22 100644[m
+Binary files a/out/production/Mapy/maps/MapWindowDialog.class and b/out/production/Mapy/maps/MapWindowDialog.class differ
+[1mdiff --git a/out/production/Mapy/maps/Publisher.class b/out/production/Mapy/maps/Publisher.class[m
+[1mindex 9556c3f..55e5582 100644[m
+Binary files a/out/production/Mapy/maps/Publisher.class and b/out/production/Mapy/maps/Publisher.class differ
+[1mdiff --git a/out/production/Mapy/maps/Scale.class b/out/production/Mapy/maps/Scale.class[m
+[1mindex 86009c1..dcef988 100644[m
+Binary files a/out/production/Mapy/maps/Scale.class and b/out/production/Mapy/maps/Scale.class differ
+[1mdiff --git a/src/maps/Map.java b/src/maps/Map.java[m
+[1mindex 35cc19d..553c3a3 100644[m
+[1m--- a/src/maps/Map.java[m
+[1m+++ b/src/maps/Map.java[m
+[36m@@ -1,12 +1,6 @@[m
+ package maps;[m
+ [m
+[31m-import java.io.BufferedReader;[m
+[31m-import java.io.File;[m
+[31m-import java.io.FileNotFoundException;[m
+[31m-import java.io.FileReader;[m
+[31m-import java.io.IOException;[m
+[31m-import java.io.PrintWriter;[m
+[31m-import java.util.StringTokenizer;[m
+[32m+[m[32mimport java.io.*;[m
+ [m
+ /**[m
+  *  Zawartość: Klasa enum Scale, Publisher, klasa MapException, klasa Map[m
+[36m@@ -60,218 +54,216 @@[m [menum Publisher[m
+ [m
+ class MapException extends Exception {[m
+ [m
+[31m-    private static final long serialVersionUID = 1L;[m
+[31m-[m
+     public MapException(String message) {[m
+         super(message);[m
+     }[m
+ }[m
+ [m
+[31m-public class Map {[m
+[31m-        private String mapName;[m
+[31m-        private Scale mapScale;[m
+[31m-        private Publisher mapPublisher;[m
+[31m-        private int mapHeight;[m
+[31m-        private int mapWidth;[m
+[31m-        private float mapPrize;[m
+[31m-[m
+[31m-        public Map(String name, String height, String width, String prize) throws MapException {[m
+[31m-                setName(name);[m
+[31m-                setHeight(height);[m
+[31m-                setWidth(width);[m
+[31m-                setPrize(prize);[m
+[31m-                mapScale = Scale.UNKNOWN;[m
+[31m-                mapPublisher = Publisher.UNKNOWN;[m
+[31m-        }[m
+[32m+[m[32mpublic class Map[m
+[32m+[m[32m{[m
+[32m+[m[32m    private String mapName;[m
+[32m+[m[32m    private Scale mapScale;[m
+[32m+[m[32m    private Publisher mapPublisher;[m
+[32m+[m[32m    private int mapHeight;[m
+[32m+[m[32m    private int mapWidth;[m
+[32m+[m[32m    private float mapPrize;[m
+[32m+[m
+[32m+[m[32m    public Map(String name, String height, String width, String prize) throws MapException {[m
+[32m+[m[32m        setName(name);[m
+[32m+[m[32m        setHeight(height);[m
+[32m+[m[32m        setWidth(width);[m
+[32m+[m[32m        setPrize(prize);[m
+[32m+[m[32m        mapScale = Scale.UNKNOWN;[m
+[32m+[m[32m        mapPublisher = Publisher.UNKNOWN;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public String getName() {[m
+[31m-            return mapName;[m
+[31m-        }[m
+[32m+[m[32m    public String getName() {[m
+[32m+[m[32m        return mapName;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setName(String mapName) throws MapException {[m
+[31m-            if (mapName == null || mapName.equals(""))[m
+[31m-                throw new MapException("Nazwa mapy nie została wpisana!");[m
+[31m-            this.mapName = mapName;[m
+[31m-        }[m
+[32m+[m[32m    public void setName(String mapName) throws MapException {[m
+[32m+[m[32m        if (mapName == null || mapName.equals(""))[m
+[32m+[m[32m            throw new MapException("Nazwa mapy nie została wpisana!");[m
+[32m+[m[32m        this.mapName = mapName;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public Scale getScale() {[m
+[31m-            return mapScale;[m
+[31m-        }[m
+[32m+[m[32m    public Scale getScale() {[m
+[32m+[m[32m        return mapScale;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setScale(Scale mapScale) {[m
+[31m-            this.mapScale = mapScale;[m
+[32m+[m[32m    public void setScale(Scale mapScale) {[m
+[32m+[m[32m        this.mapScale = mapScale;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public void setScale(String scaleName) throws MapException {[m
+[32m+[m[32m        if (scaleName == null || scaleName.equals("")) {[m
+[32m+[m[32m            this.mapScale = Scale.UNKNOWN;[m
+         }[m
+ [m
+[31m-        public void setScale(String scaleName) throws MapException {[m
+[31m-            if (scaleName == null || scaleName.equals("")) {[m
+[31m-                this.mapScale = Scale.UNKNOWN;[m
+[32m+[m[32m        for (Scale mapScale : Scale.values()) {[m
+[32m+[m[32m            if (mapScale.scaleType.equals(scaleName)) {[m
+[32m+[m[32m                this.mapScale = mapScale;[m
+[32m+[m[32m                return;[m
+             }[m
+[32m+[m[32m        }[m
+ [m
+[31m-            for(Scale mapScale: Scale.values())[m
+[31m-            {[m
+[31m-                if(mapScale.scaleType.equals(scaleName)) {[m
+[31m-                    this.mapScale = mapScale;[m
+[31m-                    return;[m
+[31m-                }[m
+[31m-            }[m
+[32m+[m[32m        throw new MapException("Nieznana skala mapy.");[m
+[32m+[m[32m    }[m
+ [m
+[31m-            throw new MapException("Nieznana skala mapy.");[m
+[31m-        }[m
+[32m+[m[32m    public Publisher getPublisher() {[m
+[32m+[m[32m        return mapPublisher;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public Publisher getPublisher() {[m
+[31m-            return mapPublisher;[m
+[31m-        }[m
+[32m+[m[32m    public void setPublisher(Publisher mapPublisher) {[m
+[32m+[m[32m        this.mapPublisher = mapPublisher;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setPublisher(Publisher mapPublisher) {[m
+[31m-            this.mapPublisher = mapPublisher;[m
+[32m+[m[32m    public void setPublisher(String publisher) throws MapException {[m
+[32m+[m[32m        if (publisher == null || publisher.equals("")) {[m
+[32m+[m[32m            this.mapPublisher = Publisher.UNKNOWN;[m
+         }[m
+ [m
+[31m-        public void setPublisher(String publisher) throws MapException {[m
+[31m-            if (publisher == null || publisher.equals("")) {[m
+[31m-                this.mapPublisher = Publisher.UNKNOWN;[m
+[31m-            }[m
+[31m-[m
+[31m-            for(Publisher mapPublisher : Publisher.values())[m
+[31m-            {[m
+[31m-                if(mapPublisher.publisherName.equals(publisher)) {[m
+[31m-                    this.mapPublisher = mapPublisher;[m
+[31m-                    return;[m
+[31m-                }[m
+[32m+[m[32m        for (Publisher mapPublisher : Publisher.values()) {[m
+[32m+[m[32m            if (mapPublisher.publisherName.equals(publisher)) {[m
+[32m+[m[32m                this.mapPublisher = mapPublisher;[m
+[32m+[m[32m                return;[m
+             }[m
+[31m-            throw new MapException("Nieznany wydawca mapy.");[m
+         }[m
+[32m+[m[32m        throw new MapException("Nieznany wydawca mapy.");[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public int getWidth() {[m
+[31m-            return mapWidth;[m
+[31m-        }[m
+[32m+[m[32m    public int getWidth() {[m
+[32m+[m[32m        return mapWidth;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setWidth(int mapWidth) throws MapException {[m
+[31m-            if (mapWidth < 0 || mapWidth > 1000)[m
+[31m-                throw new MapException("Została podana nieprawidłowa szerokość mapy.");[m
+[31m-            this.mapWidth = mapWidth;[m
+[31m-        }[m
+[32m+[m[32m    public void setWidth(int mapWidth) throws MapException {[m
+[32m+[m[32m        if (mapWidth < 0 || mapWidth > 1000)[m
+[32m+[m[32m            throw new MapException("Została podana nieprawidłowa szerokość mapy.");[m
+[32m+[m[32m        this.mapWidth = mapWidth;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setWidth(String mapWidth) throws MapException[m
+[31m-        {[m
+[31m-            if(mapWidth == null || mapWidth.equals(""))[m
+[32m+[m[32m    public void setWidth(String mapWidth) throws MapException {[m
+[32m+[m[32m        if (mapWidth == null || mapWidth.equals(""))[m
+             setWidth(0);[m
+ [m
+[31m-            try{[m
+[32m+[m[32m        try {[m
+             setWidth(Integer.parseInt(mapWidth));[m
+[31m-        }[m
+[31m-        catch (NumberFormatException e) {[m
+[32m+[m[32m        } catch (NumberFormatException e) {[m
+             throw new MapException("Nie rozpoznano liczby");[m
+         }[m
+     }[m
+ [m
+[31m-        public int getHeight() {[m
+[31m-            return mapHeight;[m
+[31m-        }[m
+[32m+[m[32m    public int getHeight() {[m
+[32m+[m[32m        return mapHeight;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setHeight(int mapHeight) throws MapException {[m
+[31m-            if (mapHeight < 0 || mapHeight > 1000)[m
+[31m-                throw new MapException("Została podana nieprawidłowa wysokość mapy.");[m
+[31m-            this.mapHeight = mapHeight;[m
+[31m-        }[m
+[32m+[m[32m    public void setHeight(int mapHeight) throws MapException {[m
+[32m+[m[32m        if (mapHeight < 0 || mapHeight > 1000)[m
+[32m+[m[32m            throw new MapException("Została podana nieprawidłowa wysokość mapy.");[m
+[32m+[m[32m        this.mapHeight = mapHeight;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setHeight(String mapHeight) throws MapException[m
+[31m-        {[m
+[31m-            if(mapHeight == null || mapHeight.equals(""))[m
+[31m-                setHeight(0);[m
+[32m+[m[32m    public void setHeight(String mapHeight) throws MapException {[m
+[32m+[m[32m        if (mapHeight == null || mapHeight.equals(""))[m
+[32m+[m[32m            setHeight(0);[m
+ [m
+[31m-            try{[m
+[31m-                setHeight(Integer.parseInt(mapHeight));[m
+[31m-            }[m
+[31m-            catch (NumberFormatException e) {[m
+[31m-                throw new MapException("Nie rozpoznano liczby");[m
+[31m-            }[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            setHeight(Integer.parseInt(mapHeight));[m
+[32m+[m[32m        } catch (NumberFormatException e) {[m
+[32m+[m[32m            throw new MapException("Nie rozpoznano liczby");[m
+         }[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public float getPrize() {[m
+[31m-            return mapPrize;[m
+[31m-        }[m
+[32m+[m[32m    public float getPrize() {[m
+[32m+[m[32m        return mapPrize;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setPrize(float mapPrize) throws MapException {[m
+[31m-            if (mapPrize < 0 || mapPrize > 10000)[m
+[31m-                throw new MapException("Została podana nieprawidłowa cena mapy.");[m
+[31m-            this.mapPrize = mapPrize;[m
+[31m-        }[m
+[32m+[m[32m    public void setPrize(float mapPrize) throws MapException {[m
+[32m+[m[32m        if (mapPrize < 0 || mapPrize > 10000)[m
+[32m+[m[32m            throw new MapException("Została podana nieprawidłowa cena mapy.");[m
+[32m+[m[32m        this.mapPrize = mapPrize;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public void setPrize(String mapPrize) throws MapException {[m
+[31m-            if(mapPrize == null || mapPrize.equals(""))[m
+[31m-                setPrize(0);[m
+[31m-            try{[m
+[31m-                setPrize(Float.parseFloat(mapPrize));[m
+[31m-            }[m
+[31m-            catch (NumberFormatException e) {[m
+[31m-                throw new MapException("Nie rozpoznano liczby");[m
+[31m-            }[m
+[32m+[m[32m    public void setPrize(String mapPrize) throws MapException {[m
+[32m+[m[32m        if (mapPrize == null || mapPrize.equals(""))[m
+[32m+[m[32m            setPrize(0);[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            setPrize(Float.parseFloat(mapPrize));[m
+[32m+[m[32m        } catch (NumberFormatException e) {[m
+[32m+[m[32m            throw new MapException("Nie rozpoznano liczby");[m
+         }[m
+[32m+[m[32m    }[m
+ [m
+[31m-        @Override[m
+[31m-        public String toString() {[m
+[31m-            return "Nazwa mapy: " + mapName + ", wydawcy: " + mapPublisher;[m
+[31m-        }[m
+[32m+[m[32m    @Override[m
+[32m+[m[32m    public String toString() {[m
+[32m+[m[32m        return "Nazwa mapy: " + mapName + ", wydawcy: " + mapPublisher;[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public static void printToFile(PrintWriter writer, Map map)[m
+[31m-        {[m
+[31m-            writer.println(map.getName() + "," + map.getHeight() + "," + map.getWidth() + "," + map.getPrize() + "," + map.getScale() + "," + map.getPublisher());[m
+[31m-        }[m
+[32m+[m[32m    public static void printToFile(PrintWriter writer, Map map) {[m
+[32m+[m[32m        writer.println(map.getName() + "," + map.getHeight() + "," + map.getWidth() + "," + map.getPrize() + "," + map.getScale() + "," + map.getPublisher());[m
+[32m+[m[32m    }[m
+ [m
+ [m
+[31m-        public static void printToFile(Map map, String fileName) throws MapException[m
+[31m-        {[m
+[31m-            try (PrintWriter writer = new PrintWriter(fileName)){[m
+[31m-                printToFile(writer, map);[m
+[31m-            } catch (FileNotFoundException e) {[m
+[31m-                throw new MapException("Nie znaleziono pliku o nazwie: " + fileName);[m
+[31m-            }[m
+[32m+[m[32m    public static void printToFile(Map map, String fileName) throws MapException {[m
+[32m+[m[32m        try (PrintWriter writer = new PrintWriter(fileName)) {[m
+[32m+[m[32m            printToFile(writer, map);[m
+[32m+[m[32m        } catch (FileNotFoundException e) {[m
+[32m+[m[32m            throw new MapException("Nie znaleziono pliku o nazwie: " + fileName);[m
+         }[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public static Map readFromFile(BufferedReader reader) throws MapException[m
+[31m-        {[m
+[31m-            try{[m
+[31m-                String line = reader.readLine();[m
+[31m-                String[] txt = line.split(",");[m
+[31m-                Map map = new Map(txt[0], txt[1], txt[2], txt[3]);[m
+[31m-                map.setScale(txt[4]);[m
+[31m-                map.setPublisher(txt[5]);[m
+[31m-                reader.close();[m
+[31m-                return map;[m
+[31m-            } catch(IOException e) {[m
+[31m-                throw new MapException("Nie udało się odczytać danych z pliku.");[m
+[31m-            }[m
+[32m+[m[32m    public static Map readFromFile(BufferedReader reader) throws MapException {[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            String line = reader.readLine();[m
+[32m+[m[32m            String[] txt = line.split(",");[m
+[32m+[m[32m            Map map = new Map(txt[0], txt[1], txt[2], txt[3]);[m
+[32m+[m[32m            map.setScale(txt[4]);[m
+[32m+[m[32m            map.setPublisher(txt[5]);[m
+[32m+[m[32m            reader.close();[m
+[32m+[m[32m            return map;[m
+[32m+[m[32m        } catch (IOException e) {[m
+[32m+[m[32m            throw new MapException("Nie udało się odczytać danych z pliku.");[m
+         }[m
+[32m+[m[32m    }[m
+ [m
+[31m-        public static Map readFromFile(String fileName) throws MapException[m
+[31m-        {[m
+[31m-            try (BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)))){[m
+[31m-                Map map = Map.readFromFile(reader);[m
+[31m-                return map;[m
+[31m-            } catch (FileNotFoundException e) {[m
+[31m-                throw new MapException("Nie odnaleziono pliku " + fileName +"!");[m
+[31m-            } catch(IOException e) {[m
+[31m-                throw new MapException("Wystapil blad podczas proby odczytu z pliku");[m
+[31m-            }[m
+[31m-[m
+[32m+[m[32m    public static Map readFromFile(String fileName) throws MapException {[m
+[32m+[m[32m        try (BufferedReader reader = new BufferedReader(new FileReader(new File(fileName)))) {[m
+[32m+[m[32m            Map map = Map.readFromFile(reader);[m
+[32m+[m[32m            return map;[m
+[32m+[m[32m        } catch (FileNotFoundException e) {[m
+[32m+[m[32m            throw new MapException("Nie odnaleziono pliku " + fileName + "!");[m
+[32m+[m[32m        } catch (IOException e) {[m
+[32m+[m[32m            throw new MapException("Wystapil blad podczas proby odczytu z pliku");[m
+         }[m
+[31m-}[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[32m+[m[32m    }[m
+ [m
+ [m
+[32m+[m[32m    public static Map readFromBinaryFile() {[m
+[32m+[m[32m        Map map = null;[m
+[32m+[m[32m        try{[m
+[32m+[m[32m            ObjectInputStream inS = new ObjectInputStream(new FileInputStream("PlikBinarny.txt"));[m
+[32m+[m[32m            map = (Map) inS.readObject();[m
+[32m+[m[32m            inS.close();[m
+[32m+[m[32m        }[m
+[32m+[m[32m        catch(IOException | ClassNotFoundException e)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            e.getMessage();[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return map;[m
+[32m+[m[32m    }[m
+ [m
+[32m+[m[32m    public static void printToBinaryFile(Map map)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream("PlikBinarny.txt"));[m
+[32m+[m[32m            outS.writeObject(map);[m
+[32m+[m[32m            outS.close();[m
+[32m+[m[32m        } catch (IOException e) {[m
+[32m+[m[32m            e.getMessage();[m
+[32m+[m[32m        }[m
+ [m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+ [m
+ [m
+ [m
+[1mdiff --git a/src/maps/MapConsoleApp.java b/src/maps/MapConsoleApp.java[m
+[1mindex e3d3594..2bfbc3a 100644[m
+[1m--- a/src/maps/MapConsoleApp.java[m
+[1m+++ b/src/maps/MapConsoleApp.java[m
+[36m@@ -1,5 +1,6 @@[m
+ package maps;[m
+ [m
+[32m+[m[32mimport java.io.Serializable;[m
+ import java.util.Arrays;[m
+ [m
+ /**[m
+[36m@@ -9,12 +10,12 @@[m [mimport java.util.Arrays;[m
+  * Data: październik 2020 r.[m
+  */[m
+ [m
+[31m-public class MapConsoleApp {[m
+[32m+[m[32mpublic class MapConsoleApp implements Serializable {[m
+ [m
+     public static final String AUTHOR =[m
+             "Imię: Dominik \n" +[m
+             "Nazwisko: Tłokiński \n" +[m
+[31m-            "Kierunek: ITE \n " +[m
+[32m+[m[32m            "Kierunek: ITE\n " +[m
+             "Numer indeksu: 252689 \n";[m
+ [m
+     private static final String GREETING_MESSAGE =[m
+[1mdiff --git a/src/maps/MapWindowApp.java b/src/maps/MapWindowApp.java[m
+[1mindex feb9dce..57ac33b 100644[m
+[1m--- a/src/maps/MapWindowApp.java[m
+[1m+++ b/src/maps/MapWindowApp.java[m
+[36m@@ -16,15 +16,24 @@[m [mimport java.io.IOException;[m
+ [m
+ [m
+ public class MapWindowApp extends JFrame {[m
+[31m-    private Map currentMap;[m
+[32m+[m[32m    private static final String ABOUT_APP_MESSAGE =[m
+[32m+[m[32m            "Program Map - wersja okienkowa\n" +[m
+[32m+[m[32m                    "Autor: Dominik Tłokiński\n" +[m
+[32m+[m[32m                    "Data: październik 2020 r.\n";[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    static Map currentMap;[m
+ [m
+     JButton newButton = new JButton("Nowa mapa");[m
+[31m-    JButton modifyButton = new JButton("Zmodyfikuj mape");[m
+[31m-    JButton saveToFileButton = new JButton("Zapisz mape");[m
+[31m-    JButton printFromFileButton = new JButton("Wczytaj mape");[m
+[31m-    JButton deleteButton = new JButton("Usuń mape");[m
+[32m+[m[32m    JButton modifyButton = new JButton("Zmodyfikuj");[m
+[32m+[m[32m    JButton saveToFileButton = new JButton("Zapisz do pliku");[m
+[32m+[m[32m    JButton printFromFileButton = new JButton("Wczytaj z pliku");[m
+[32m+[m[32m    JButton deleteButton = new JButton("Usuń");[m
+     JButton authorInfoButton = new JButton("O autorze");[m
+     JButton exitButton = new JButton("Wyjdź");[m
+[32m+[m[32m    JButton saveToBinaryFileButton  = new JButton("Zapisz do pliku binarnego");[m
+[32m+[m[32m    JButton printFromBinaryFileButton  = new JButton("Wczytaj z pliku binarnego");[m
+ [m
+     JLabel mapNameLabel = new JLabel("Nazwa mapy");[m
+     JLabel mapWidthLabel = new JLabel("Szerokość");[m
+[36m@@ -40,6 +49,23 @@[m [mpublic class MapWindowApp extends JFrame {[m
+     JTextField mapPublisherTextField = new JTextField(10);[m
+     JTextField mapPrizeTextField = new JTextField(10);[m
+ [m
+[32m+[m[32m    JMenuBar menuBar = new JMenuBar();[m
+[32m+[m[32m    JMenu mapBar = new JMenu("Mapy");[m
+[32m+[m[32m    JMenu fileBar = new JMenu("Plik");[m
+[32m+[m[32m    JMenu infoBar = new JMenu("Info");[m
+[32m+[m[32m    JMenu exitBar = new JMenu("Wyjście");[m
+[32m+[m[32m    JMenuItem newMapBar = new JMenuItem("Nowa");[m
+[32m+[m[32m    JMenuItem modifyMapBar = new JMenuItem("Zmodyfikuj");[m
+[32m+[m[32m    JMenuItem deleteMapBar = new JMenuItem("Usuń");[m
+[32m+[m[32m    JMenuItem saveMapBar = new JMenuItem("Zapisz");[m
+[32m+[m[32m    JMenuItem saveBinaryMapBar = new JMenuItem("Zapisz binarnie");[m
+[32m+[m[32m    JMenuItem printMapBar = new JMenuItem("Wczytaj");[m
+[32m+[m[32m    JMenuItem printBinaryMapBar = new JMenuItem("Wczytaj z binarnego");[m
+[32m+[m[32m    JMenuItem authorInfoBar = new JMenuItem("O autorze");[m
+[32m+[m[32m    JMenuItem appInfoBar = new JMenuItem("O aplikacji");[m
+[32m+[m[32m    JMenuItem exitItemBar = new JMenuItem("Wyjdź");[m
+[32m+[m
+[32m+[m
+     public MapWindowApp() {[m
+         initComponents();[m
+     }[m
+[36m@@ -51,9 +77,10 @@[m [mpublic class MapWindowApp extends JFrame {[m
+     private void initComponents() {[m
+         this.setTitle("Okienkowe Mapy");[m
+ [m
+[31m-[m
+         addButtonsLabelsAndTextFields();[m
+[31m-        showCurrentMap();[m
+[32m+[m[32m        setBars();[m
+[32m+[m[32m        this.pack();[m
+[32m+[m[32m        this.setJMenuBar(menuBar);[m
+         this.setLocationRelativeTo(null);[m
+         this.setSize(400, 400);[m
+         this.setResizable(false);[m
+[36m@@ -61,76 +88,17 @@[m [mpublic class MapWindowApp extends JFrame {[m
+         this.setDefaultCloseOperation(3);[m
+     }[m
+ [m
+[31m-    public void addButtonsLabelsAndTextFields() {[m
+ [m
+[31m-        newButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                currentMap = MapWindowDialog.createNewMap(this);[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        modifyButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");[m
+[31m-                MapWindowDialog.changeMapData(this, currentMap);[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        saveToFileButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                String fileName = "";[m
+[31m-                while (fileName == null || fileName.equals(""))[m
+[31m-                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, do którego chcesz zapisać obiekt");[m
+[31m-[m
+[31m-                try {[m
+[31m-                    if(currentMap == null)[m
+[31m-                        JOptionPane.showMessageDialog(rootPane,"Nie ma mapy do zapisania!");[m
+[31m-[m
+[31m-                    Map.printToFile(currentMap, fileName);[m
+[31m-                } catch (MapException ex) {[m
+[31m-                    JOptionPane.showMessageDialog(rootPane, "Nie udało się zapisać do pliku");[m
+[31m-                }[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        printFromFileButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                String fileName = "";[m
+[31m-                while (fileName == null || fileName.equals(""))[m
+[31m-                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, z którego chcesz wpisać obiekt");[m
+[31m-[m
+[31m-                try {[m
+[31m-                    currentMap = Map.readFromFile(fileName);[m
+[31m-                } catch (MapException ex) {[m
+[31m-                    JOptionPane.showMessageDialog(rootPane, "Nie udało się odczytać pliku");[m
+[31m-                }[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        deleteButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                currentMap = null;[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        authorInfoButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                JOptionPane.showMessageDialog(rootPane, MapConsoleApp.AUTHOR);[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        exitButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                System.exit(0);[m
+[31m-            }[m
+[31m-        });[m
+[32m+[m[32m    public void addButtonsLabelsAndTextFields() {[m
+[32m+[m[32m        newButton.addActionListener(e -> newButtonActionListener());[m
+[32m+[m[32m        modifyButton.addActionListener(e -> modifyButtonActionListener());[m
+[32m+[m[32m        saveToFileButton.addActionListener(e -> saveButtonActionListener());[m
+[32m+[m[32m        saveToBinaryFileButton.addActionListener(e -> saveBinaryButtonActionListener());[m
+[32m+[m[32m        printFromFileButton.addActionListener(e -> printButtonActionListener());[m
+[32m+[m[32m        printFromBinaryFileButton.addActionListener(e -> printBinaryButtonActionListener());[m
+[32m+[m[32m        deleteButton.addActionListener(e -> deleteButtonActionListener());[m
+[32m+[m[32m        authorInfoButton.addActionListener(e -> authorButtonActionListener());[m
+[32m+[m[32m        exitButton.addActionListener(e -> exitButtonActionListener());[m
+ [m
+         showCurrentMap();[m
+ [m
+[36m@@ -146,13 +114,13 @@[m [mpublic class MapWindowApp extends JFrame {[m
+                         layout.createParallelGroup()[m
+                                 .addComponent(mapNameLabel).addComponent(mapWidthLabel).addComponent(mapHeightLabel).addComponent(mapScaleLabel)[m
+                                 .addComponent(mapPublisherLabel).addComponent(mapPrizeLabel)[m
+[31m-                                .addComponent(newButton).addComponent(saveToFileButton).addComponent(deleteButton).addComponent(exitButton)[m
+[32m+[m[32m                                .addComponent(newButton).addComponent(saveToFileButton).addComponent(deleteButton).addComponent(saveToBinaryFileButton).addComponent(exitButton)[m
+                 )[m
+                 .addGroup([m
+                         layout.createParallelGroup()[m
+                                 .addComponent(mapNameTextField).addComponent(mapWidthTextField).addComponent(mapHeightTextField).addComponent(mapScaleTextField)[m
+                                 .addComponent(mapPublisherTextField).addComponent(mapPrizeTextField)[m
+[31m-                                .addComponent(modifyButton).addComponent(printFromFileButton).addComponent(authorInfoButton)[m
+[32m+[m[32m                                .addComponent(modifyButton).addComponent(printFromFileButton).addComponent(printFromBinaryFileButton).addComponent(authorInfoButton)[m
+                 )[m
+         );[m
+ [m
+[36m@@ -185,6 +153,9 @@[m [mpublic class MapWindowApp extends JFrame {[m
+                 .addGroup([m
+                         layout.createParallelGroup().addComponent(deleteButton).addComponent(authorInfoButton)[m
+                 )[m
+[32m+[m[32m                .addGroup([m
+[32m+[m[32m                        layout.createParallelGroup().addComponent(saveToBinaryFileButton).addComponent(printFromBinaryFileButton)[m
+[32m+[m[32m                )[m
+                 .addComponent(exitButton)[m
+         );[m
+ [m
+[36m@@ -196,6 +167,62 @@[m [mpublic class MapWindowApp extends JFrame {[m
+         mapPrizeTextField.setEditable(false);[m
+     }[m
+ [m
+[32m+[m[32m    public void setBars() {[m
+[32m+[m[32m        menuBar.add(mapBar);[m
+[32m+[m[32m        menuBar.add(fileBar);[m
+[32m+[m[32m        menuBar.add(infoBar);[m
+[32m+[m[32m        menuBar.add(exitBar);[m
+[32m+[m
+[32m+[m[32m        mapBar.add(newMapBar);[m
+[32m+[m[32m        mapBar.add(modifyMapBar);[m
+[32m+[m[32m        mapBar.add(deleteMapBar);[m
+[32m+[m
+[32m+[m[32m        fileBar.add(saveMapBar);[m
+[32m+[m[32m        fileBar.add(printMapBar);[m
+[32m+[m[32m        fileBar.add(saveBinaryMapBar);[m
+[32m+[m[32m        fileBar.add(printBinaryMapBar);[m
+[32m+[m
+[32m+[m[32m        infoBar.add(authorInfoBar);[m
+[32m+[m[32m        infoBar.add(appInfoBar);[m
+[32m+[m[32m        exitBar.add(exitItemBar);[m
+[32m+[m
+[32m+[m[32m        newMapBar.addActionListener(e -> newButtonActionListener());[m
+[32m+[m[32m        modifyMapBar.addActionListener(e -> modifyButtonActionListener());[m
+[32m+[m[32m        deleteMapBar.addActionListener(e -> deleteButtonActionListener());[m
+[32m+[m[32m        saveMapBar.addActionListener(e -> saveButtonActionListener());[m
+[32m+[m[32m        saveBinaryMapBar.addActionListener(e -> saveBinaryButtonActionListener());[m
+[32m+[m[32m        printMapBar.addActionListener(e -> printButtonActionListener());[m
+[32m+[m[32m        printBinaryMapBar.addActionListener(e -> printBinaryButtonActionListener());[m
+[32m+[m[32m        authorInfoBar.addActionListener(e -> authorButtonActionListener());[m
+[32m+[m[32m        appInfoBar.addActionListener(e -> appButtonActionListener());[m
+[32m+[m[32m        exitItemBar.addActionListener(e -> exitButtonActionListener());[m
+[32m+[m
+[32m+[m[32m        mapBar.setMnemonic('m');[m
+[32m+[m[32m        newMapBar.setMnemonic('n');[m
+[32m+[m[32m        modifyMapBar.setMnemonic('o');[m
+[32m+[m[32m        deleteMapBar.setMnemonic('u');[m
+[32m+[m[32m        saveMapBar.setMnemonic('s');[m
+[32m+[m[32m        saveBinaryMapBar.setMnemonic('b');[m
+[32m+[m[32m        printMapBar.setMnemonic('w');[m
+[32m+[m[32m        printBinaryMapBar.setMnemonic('g');[m
+[32m+[m[32m        infoBar.setMnemonic('i');[m
+[32m+[m[32m        authorInfoBar.setMnemonic('a');[m
+[32m+[m[32m        appInfoBar.setMnemonic('p');[m
+[32m+[m[32m        exitBar.setMnemonic('y');[m
+[32m+[m[32m        exitItemBar.setMnemonic('j');[m
+[32m+[m[32m        fileBar.setMnemonic('k');[m
+[32m+[m
+[32m+[m[32m        newMapBar.setToolTipText("Otwiera nowe okno do stworzenia mapy");[m
+[32m+[m[32m        modifyMapBar.setToolTipText("Otwiera nowe okno do modyfikacji mapy");[m
+[32m+[m[32m        deleteMapBar.setToolTipText("Usuwa aktualną mapę");[m
+[32m+[m[32m        saveMapBar.setToolTipText("Zapisuje aktualną mapę do pliku");[m
+[32m+[m[32m        saveBinaryMapBar.setToolTipText("Zapisuje aktualną mapę do pliku binarnego");[m
+[32m+[m[32m        printMapBar.setToolTipText("Wczytuje aktualną mapę z pliku");[m
+[32m+[m[32m        printBinaryMapBar.setToolTipText("Wczytuje aktualną mapę z pliku binarnego");[m
+[32m+[m[32m        authorInfoBar.setToolTipText("Informacje o autorze");[m
+[32m+[m[32m        appInfoBar.setToolTipText("Informacje o aplikacji");[m
+[32m+[m[32m        exitItemBar.setToolTipText("Zamyka aplikacje");[m
+[32m+[m[32m    }[m
+ [m
+     public void showCurrentMap()[m
+     {[m
+[36m@@ -217,7 +244,80 @@[m [mpublic class MapWindowApp extends JFrame {[m
+             mapPublisherTextField.setText(currentMap.getPublisher().toString());[m
+             mapPrizeTextField.setText(String.valueOf(currentMap.getPrize()));[m
+         }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void newButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        var app = this;[m
+[32m+[m[32m        currentMap = MapWindowDialog.createNewMap(app);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void modifyButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        var app = this;[m
+[32m+[m[32m        if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");[m
+[32m+[m[32m        MapWindowDialog.changeMapData(app, currentMap);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m   void saveButtonActionListener(){[m
+[32m+[m[32m        String fileName = "";[m
+[32m+[m[32m        while (fileName == null || fileName.equals(""))[m
+[32m+[m[32m            fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, do którego chcesz zapisać obiekt");[m
+[32m+[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            if (currentMap == null)[m
+[32m+[m[32m                JOptionPane.showMessageDialog(rootPane, "Nie ma mapy do zapisania!");[m
+[32m+[m
+[32m+[m[32m            Map.printToFile(currentMap, fileName);[m
+[32m+[m[32m        } catch(MapException e) {[m
+[32m+[m[32m            JOptionPane.showMessageDialog(rootPane, "Nie udało się wczytać do pliku");[m
+[32m+[m[32m       }[m
+[32m+[m[32m    }[m
+ [m
+[32m+[m[32m    void saveBinaryButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        if(currentMap == null)[m
+[32m+[m[32m            JOptionPane.showMessageDialog(rootPane,"Nie ma mapy do zapisania!");[m
+[32m+[m
+[32m+[m[32m        Map.printToBinaryFile(currentMap);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void printButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        String fileName = "";[m
+[32m+[m[32m        while (fileName == null || fileName.equals(""))[m
+[32m+[m[32m            fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, z którego chcesz wpisać obiekt");[m
+[32m+[m
+[32m+[m[32m        try {[m
+[32m+[m[32m            currentMap = Map.readFromFile(fileName);[m
+[32m+[m[32m        } catch (MapException ex) {[m
+[32m+[m[32m            JOptionPane.showMessageDialog(rootPane, "Nie udało się odczytać pliku");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void printBinaryButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        currentMap = Map.readFromBinaryFile();[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void deleteButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        currentMap = null;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void authorButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        JOptionPane.showMessageDialog(rootPane, MapConsoleApp.AUTHOR);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void appButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        JOptionPane.showMessageDialog(rootPane, ABOUT_APP_MESSAGE);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void exitButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        System.exit(0);[m
+     }[m
+ }[m
+ [m
+[1mdiff --git a/src/maps/MapWindowDialog.java b/src/maps/MapWindowDialog.java[m
+[1mindex 4c17e81..1d95ce4 100644[m
+[1m--- a/src/maps/MapWindowDialog.java[m
+[1m+++ b/src/maps/MapWindowDialog.java[m
+[36m@@ -15,7 +15,7 @@[m [mimport java.awt.event.ActionListener;[m
+ [m
+ public class MapWindowDialog extends JDialog[m
+ {[m
+[31m-    private final Map map;[m
+[32m+[m[32m    private Map map;[m
+ [m
+     JLabel mapNameLabel = new JLabel("Nazwa mapy");[m
+     JLabel mapWidthLabel = new JLabel("Szerokość");[m
+[36m@@ -58,34 +58,8 @@[m [mpublic class MapWindowDialog extends JDialog[m
+             mapPrizeTextField.setText(String.valueOf(map.getPrize()));[m
+         }[m
+ [m
+[31m-        okButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                try{[m
+[31m-                    if(map == null)[m
+[31m-                        new Map(mapNameTextField.getText(), mapHeightTextField.getText(), mapWidthTextField.getText(), mapPrizeTextField.getText());[m
+[31m-                    else{[m
+[31m-                        map.setName(mapNameTextField.getText());[m
+[31m-                        map.setHeight(mapHeightTextField.getText());[m
+[31m-                        map.setWidth(mapWidthTextField.getText());[m
+[31m-                        map.setPrize(mapPrizeTextField.getText());[m
+[31m-                    }[m
+[31m-                    map.setScale((Scale) mapScaleJBox.getSelectedItem());[m
+[31m-                    map.setPublisher((Publisher) mapPublisherJBox.getSelectedItem());[m
+[31m-                }[m
+[31m-                catch(MapException ex)[m
+[31m-                {[m
+[31m-                    JOptionPane.showMessageDialog(getParent(), "Nie udało się edytować mapy");[m
+[31m-                }[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        cancelButton.addActionListener(new ActionListener() {[m
+[31m-            @Override[m
+[31m-            public void actionPerformed(ActionEvent e) {[m
+[31m-                dispose();[m
+[31m-            }[m
+[31m-        });[m
+[32m+[m[32m        okButton.addActionListener(e -> okButtonActionListener());[m
+[32m+[m[32m        cancelButton.addActionListener(e -> cancelButtonActionListener());[m
+ [m
+         GroupLayout layout = new GroupLayout(this.getContentPane());[m
+         this.getContentPane().setLayout(layout);[m
+[36m@@ -135,8 +109,10 @@[m [mpublic class MapWindowDialog extends JDialog[m
+         );[m
+ [m
+         this.setSize(200,200);[m
+[32m+[m[32m        this.pack();[m
+         this.setLocationRelativeTo(getParent());[m
+         this.setDefaultCloseOperation(2);[m
+[32m+[m[32m        this.setVisible(true);[m
+     }[m
+ [m
+ [m
+[36m@@ -151,4 +127,29 @@[m [mpublic class MapWindowDialog extends JDialog[m
+     {[m
+         new MapWindowDialog(parent, map);[m
+     }[m
+[32m+[m
+[32m+[m[32m    void okButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        try{[m
+[32m+[m[32m            if(map == null)[m
+[32m+[m[32m                map = new Map(mapNameTextField.getText(), mapHeightTextField.getText(), mapWidthTextField.getText(), mapPrizeTextField.getText());[m
+[32m+[m[32m            else{[m
+[32m+[m[32m                map.setName(mapNameTextField.getText());[m
+[32m+[m[32m                map.setHeight(Integer.parseInt(mapHeightTextField.getText()));[m
+[32m+[m[32m                map.setWidth(Integer.parseInt(mapWidthTextField.getText()));[m
+[32m+[m[32m                map.setPrize(Float.parseFloat(mapPrizeTextField.getText()));[m
+[32m+[m[32m            }[m
+[32m+[m[32m            map.setScale((Scale) mapScaleJBox.getSelectedItem());[m
+[32m+[m[32m            map.setPublisher((Publisher) mapPublisherJBox.getSelectedItem());[m
+[32m+[m[32m        }[m
+[32m+[m[32m        catch(MapException ex)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            JOptionPane.showMessageDialog(getParent(), "Nie udało się edytować mapy");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    void cancelButtonActionListener()[m
+[32m+[m[32m    {[m
+[32m+[m[32m        dispose();[m
+[32m+[m[32m    }[m
+ }[m
+[1mdiff --git a/v b/v[m
+[1mdeleted file mode 100644[m
+[1mindex e69de29..0000000[m

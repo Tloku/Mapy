@@ -16,15 +16,24 @@ import java.io.IOException;
 
 
 public class MapWindowApp extends JFrame {
-    private Map currentMap;
+    private static final String ABOUT_APP_MESSAGE =
+            "Program Map - wersja okienkowa\n" +
+                    "Autor: Dominik Tłokiński\n" +
+                    "Data: październik 2020 r.\n";
+
+
+
+    static Map currentMap;
 
     JButton newButton = new JButton("Nowa mapa");
-    JButton modifyButton = new JButton("Zmodyfikuj mape");
-    JButton saveToFileButton = new JButton("Zapisz mape");
-    JButton printFromFileButton = new JButton("Wczytaj mape");
-    JButton deleteButton = new JButton("Usuń mape");
+    JButton modifyButton = new JButton("Zmodyfikuj");
+    JButton saveToFileButton = new JButton("Zapisz do pliku");
+    JButton printFromFileButton = new JButton("Wczytaj z pliku");
+    JButton deleteButton = new JButton("Usuń");
     JButton authorInfoButton = new JButton("O autorze");
     JButton exitButton = new JButton("Wyjdź");
+    JButton saveToBinaryFileButton  = new JButton("Zapisz do pliku binarnego");
+    JButton printFromBinaryFileButton  = new JButton("Wczytaj z pliku binarnego");
 
     JLabel mapNameLabel = new JLabel("Nazwa mapy");
     JLabel mapWidthLabel = new JLabel("Szerokość");
@@ -40,6 +49,23 @@ public class MapWindowApp extends JFrame {
     JTextField mapPublisherTextField = new JTextField(10);
     JTextField mapPrizeTextField = new JTextField(10);
 
+    JMenuBar menuBar = new JMenuBar();
+    JMenu mapBar = new JMenu("Mapy");
+    JMenu fileBar = new JMenu("Plik");
+    JMenu infoBar = new JMenu("Info");
+    JMenu exitBar = new JMenu("Wyjście");
+    JMenuItem newMapBar = new JMenuItem("Nowa");
+    JMenuItem modifyMapBar = new JMenuItem("Zmodyfikuj");
+    JMenuItem deleteMapBar = new JMenuItem("Usuń");
+    JMenuItem saveMapBar = new JMenuItem("Zapisz");
+    JMenuItem saveBinaryMapBar = new JMenuItem("Zapisz binarnie");
+    JMenuItem printMapBar = new JMenuItem("Wczytaj");
+    JMenuItem printBinaryMapBar = new JMenuItem("Wczytaj z binarnego");
+    JMenuItem authorInfoBar = new JMenuItem("O autorze");
+    JMenuItem appInfoBar = new JMenuItem("O aplikacji");
+    JMenuItem exitItemBar = new JMenuItem("Wyjdź");
+
+
     public MapWindowApp() {
         initComponents();
     }
@@ -51,9 +77,10 @@ public class MapWindowApp extends JFrame {
     private void initComponents() {
         this.setTitle("Okienkowe Mapy");
 
-
         addButtonsLabelsAndTextFields();
-        showCurrentMap();
+        setBars();
+        this.pack();
+        this.setJMenuBar(menuBar);
         this.setLocationRelativeTo(null);
         this.setSize(400, 400);
         this.setResizable(false);
@@ -61,76 +88,17 @@ public class MapWindowApp extends JFrame {
         this.setDefaultCloseOperation(3);
     }
 
+
     public void addButtonsLabelsAndTextFields() {
-
-        newButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentMap = MapWindowDialog.createNewMap(this);
-            }
-        });
-
-        modifyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
-                MapWindowDialog.changeMapData(this, currentMap);
-            }
-        });
-
-        saveToFileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String fileName = "";
-                while (fileName == null || fileName.equals(""))
-                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, do którego chcesz zapisać obiekt");
-
-                try {
-                    if(currentMap == null)
-                        JOptionPane.showMessageDialog(rootPane,"Nie ma mapy do zapisania!");
-
-                    Map.printToFile(currentMap, fileName);
-                } catch (MapException ex) {
-                    JOptionPane.showMessageDialog(rootPane, "Nie udało się zapisać do pliku");
-                }
-            }
-        });
-
-        printFromFileButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String fileName = "";
-                while (fileName == null || fileName.equals(""))
-                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, z którego chcesz wpisać obiekt");
-
-                try {
-                    currentMap = Map.readFromFile(fileName);
-                } catch (MapException ex) {
-                    JOptionPane.showMessageDialog(rootPane, "Nie udało się odczytać pliku");
-                }
-            }
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                currentMap = null;
-            }
-        });
-
-        authorInfoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(rootPane, MapConsoleApp.AUTHOR);
-            }
-        });
-
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        newButton.addActionListener(e -> newButtonActionListener());
+        modifyButton.addActionListener(e -> modifyButtonActionListener());
+        saveToFileButton.addActionListener(e -> saveButtonActionListener());
+        saveToBinaryFileButton.addActionListener(e -> saveBinaryButtonActionListener());
+        printFromFileButton.addActionListener(e -> printButtonActionListener());
+        printFromBinaryFileButton.addActionListener(e -> printBinaryButtonActionListener());
+        deleteButton.addActionListener(e -> deleteButtonActionListener());
+        authorInfoButton.addActionListener(e -> authorButtonActionListener());
+        exitButton.addActionListener(e -> exitButtonActionListener());
 
         showCurrentMap();
 
@@ -146,13 +114,13 @@ public class MapWindowApp extends JFrame {
                         layout.createParallelGroup()
                                 .addComponent(mapNameLabel).addComponent(mapWidthLabel).addComponent(mapHeightLabel).addComponent(mapScaleLabel)
                                 .addComponent(mapPublisherLabel).addComponent(mapPrizeLabel)
-                                .addComponent(newButton).addComponent(saveToFileButton).addComponent(deleteButton).addComponent(exitButton)
+                                .addComponent(newButton).addComponent(saveToFileButton).addComponent(deleteButton).addComponent(saveToBinaryFileButton).addComponent(exitButton)
                 )
                 .addGroup(
                         layout.createParallelGroup()
                                 .addComponent(mapNameTextField).addComponent(mapWidthTextField).addComponent(mapHeightTextField).addComponent(mapScaleTextField)
                                 .addComponent(mapPublisherTextField).addComponent(mapPrizeTextField)
-                                .addComponent(modifyButton).addComponent(printFromFileButton).addComponent(authorInfoButton)
+                                .addComponent(modifyButton).addComponent(printFromFileButton).addComponent(printFromBinaryFileButton).addComponent(authorInfoButton)
                 )
         );
 
@@ -185,6 +153,9 @@ public class MapWindowApp extends JFrame {
                 .addGroup(
                         layout.createParallelGroup().addComponent(deleteButton).addComponent(authorInfoButton)
                 )
+                .addGroup(
+                        layout.createParallelGroup().addComponent(saveToBinaryFileButton).addComponent(printFromBinaryFileButton)
+                )
                 .addComponent(exitButton)
         );
 
@@ -196,6 +167,62 @@ public class MapWindowApp extends JFrame {
         mapPrizeTextField.setEditable(false);
     }
 
+    public void setBars() {
+        menuBar.add(mapBar);
+        menuBar.add(fileBar);
+        menuBar.add(infoBar);
+        menuBar.add(exitBar);
+
+        mapBar.add(newMapBar);
+        mapBar.add(modifyMapBar);
+        mapBar.add(deleteMapBar);
+
+        fileBar.add(saveMapBar);
+        fileBar.add(printMapBar);
+        fileBar.add(saveBinaryMapBar);
+        fileBar.add(printBinaryMapBar);
+
+        infoBar.add(authorInfoBar);
+        infoBar.add(appInfoBar);
+        exitBar.add(exitItemBar);
+
+        newMapBar.addActionListener(e -> newButtonActionListener());
+        modifyMapBar.addActionListener(e -> modifyButtonActionListener());
+        deleteMapBar.addActionListener(e -> deleteButtonActionListener());
+        saveMapBar.addActionListener(e -> saveButtonActionListener());
+        saveBinaryMapBar.addActionListener(e -> saveBinaryButtonActionListener());
+        printMapBar.addActionListener(e -> printButtonActionListener());
+        printBinaryMapBar.addActionListener(e -> printBinaryButtonActionListener());
+        authorInfoBar.addActionListener(e -> authorButtonActionListener());
+        appInfoBar.addActionListener(e -> appButtonActionListener());
+        exitItemBar.addActionListener(e -> exitButtonActionListener());
+
+        mapBar.setMnemonic('m');
+        newMapBar.setMnemonic('n');
+        modifyMapBar.setMnemonic('o');
+        deleteMapBar.setMnemonic('u');
+        saveMapBar.setMnemonic('s');
+        saveBinaryMapBar.setMnemonic('b');
+        printMapBar.setMnemonic('w');
+        printBinaryMapBar.setMnemonic('g');
+        infoBar.setMnemonic('i');
+        authorInfoBar.setMnemonic('a');
+        appInfoBar.setMnemonic('p');
+        exitBar.setMnemonic('y');
+        exitItemBar.setMnemonic('j');
+        fileBar.setMnemonic('k');
+
+        newMapBar.setToolTipText("Otwiera nowe okno do stworzenia mapy");
+        modifyMapBar.setToolTipText("Otwiera nowe okno do modyfikacji mapy");
+        deleteMapBar.setToolTipText("Usuwa aktualną mapę");
+        saveMapBar.setToolTipText("Zapisuje aktualną mapę do pliku");
+        saveBinaryMapBar.setToolTipText("Zapisuje aktualną mapę do pliku binarnego");
+        printMapBar.setToolTipText("Wczytuje aktualną mapę z pliku");
+        printBinaryMapBar.setToolTipText("Wczytuje aktualną mapę z pliku binarnego");
+        authorInfoBar.setToolTipText("Informacje o autorze");
+        appInfoBar.setToolTipText("Informacje o aplikacji");
+        exitItemBar.setToolTipText("Zamyka aplikacje");
+    }
 
     public void showCurrentMap()
     {
@@ -217,7 +244,80 @@ public class MapWindowApp extends JFrame {
             mapPublisherTextField.setText(currentMap.getPublisher().toString());
             mapPrizeTextField.setText(String.valueOf(currentMap.getPrize()));
         }
+    }
 
+    void newButtonActionListener()
+    {
+        var app = this;
+        currentMap = MapWindowDialog.createNewMap(app);
+    }
+
+    void modifyButtonActionListener()
+    {
+        var app = this;
+        if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
+        MapWindowDialog.changeMapData(app, currentMap);
+    }
+
+   void saveButtonActionListener(){
+        String fileName = "";
+        while (fileName == null || fileName.equals(""))
+            fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, do którego chcesz zapisać obiekt");
+
+        try {
+            if (currentMap == null)
+                JOptionPane.showMessageDialog(rootPane, "Nie ma mapy do zapisania!");
+
+            Map.printToFile(currentMap, fileName);
+        } catch(MapException e) {
+            JOptionPane.showMessageDialog(rootPane, "Nie udało się wczytać do pliku");
+       }
+    }
+
+    void saveBinaryButtonActionListener()
+    {
+        if(currentMap == null)
+            JOptionPane.showMessageDialog(rootPane,"Nie ma mapy do zapisania!");
+
+        Map.printToBinaryFile(currentMap);
+    }
+
+    void printButtonActionListener()
+    {
+        String fileName = "";
+        while (fileName == null || fileName.equals(""))
+            fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, z którego chcesz wpisać obiekt");
+
+        try {
+            currentMap = Map.readFromFile(fileName);
+        } catch (MapException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Nie udało się odczytać pliku");
+        }
+    }
+
+    void printBinaryButtonActionListener()
+    {
+        currentMap = Map.readFromBinaryFile();
+    }
+
+    void deleteButtonActionListener()
+    {
+        currentMap = null;
+    }
+
+    void authorButtonActionListener()
+    {
+        JOptionPane.showMessageDialog(rootPane, MapConsoleApp.AUTHOR);
+    }
+
+    void appButtonActionListener()
+    {
+        JOptionPane.showMessageDialog(rootPane, ABOUT_APP_MESSAGE);
+    }
+
+    void exitButtonActionListener()
+    {
+        System.exit(0);
     }
 }
 
