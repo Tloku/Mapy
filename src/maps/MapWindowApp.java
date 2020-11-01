@@ -52,8 +52,7 @@ public class MapWindowApp extends JFrame {
         this.setTitle("Okienkowe Mapy");
 
 
-        addButtonsLabelsAndTextFields();
-        showCurrentMap();
+
         this.setLocationRelativeTo(null);
         this.setSize(400, 400);
         this.setResizable(false);
@@ -62,11 +61,11 @@ public class MapWindowApp extends JFrame {
     }
 
     public void addButtonsLabelsAndTextFields() {
-
+        var app = this;
         newButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                currentMap = MapWindowDialog.createNewMap(this);
+                currentMap = MapWindowDialog.createNewMap(app);
             }
         });
 
@@ -74,7 +73,7 @@ public class MapWindowApp extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
-                MapWindowDialog.changeMapData(this, currentMap);
+                MapWindowDialog.changeMapData(app, currentMap);
             }
         });
 
