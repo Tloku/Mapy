@@ -88,6 +88,7 @@ public class MapWindowApp extends JFrame {
         this.setDefaultCloseOperation(3);
     }
 
+<<<<<<< HEAD
 
     public void addButtonsLabelsAndTextFields() {
         newButton.addActionListener(e -> newButtonActionListener());
@@ -99,6 +100,78 @@ public class MapWindowApp extends JFrame {
         deleteButton.addActionListener(e -> deleteButtonActionListener());
         authorInfoButton.addActionListener(e -> authorButtonActionListener());
         exitButton.addActionListener(e -> exitButtonActionListener());
+=======
+    public void addButtonsLabelsAndTextFields() {
+        var app = this;
+        newButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentMap = MapWindowDialog.createNewMap(app);
+            }
+        });
+
+        modifyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
+                MapWindowDialog.changeMapData(app, currentMap);
+            }
+        });
+
+        saveToFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String fileName = "";
+                while (fileName == null || fileName.equals(""))
+                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, do którego chcesz zapisać obiekt");
+
+                try {
+                    if(currentMap == null)
+                        JOptionPane.showMessageDialog(rootPane,"Nie ma mapy do zapisania!");
+
+                    Map.printToFile(currentMap, fileName);
+                } catch (MapException ex) {
+                    JOptionPane.showMessageDialog(rootPane, "Nie udało się zapisać do pliku");
+                }
+            }
+        });
+
+        printFromFileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String fileName = "";
+                while (fileName == null || fileName.equals(""))
+                    fileName = JOptionPane.showInputDialog("Podaj nazwe pliku, z którego chcesz wpisać obiekt");
+
+                try {
+                    currentMap = Map.readFromFile(fileName);
+                } catch (MapException ex) {
+                    JOptionPane.showMessageDialog(rootPane, "Nie udało się odczytać pliku");
+                }
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentMap = null;
+            }
+        });
+
+        authorInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(rootPane, MapConsoleApp.AUTHOR);
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+>>>>>>> a3c8ee4efa17a6891b3a458c6c18187955e47b3a
 
         showCurrentMap();
 
