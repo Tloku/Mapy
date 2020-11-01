@@ -51,8 +51,8 @@ public class MapWindowApp extends JFrame {
     private void initComponents() {
         this.setTitle("Okienkowe Mapy");
 
-
-
+        addButtonsLabelsAndTextFields();
+        showCurrentMap();
         this.setLocationRelativeTo(null);
         this.setSize(400, 400);
         this.setResizable(false);
