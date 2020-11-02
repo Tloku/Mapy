@@ -23,7 +23,7 @@ public class MapWindowApp extends JFrame {
 
 
 
-    static Map currentMap;
+    public Map currentMap;
 
     JButton newButton = new JButton("Nowa mapa");
     JButton modifyButton = new JButton("Zmodyfikuj");
@@ -303,6 +303,7 @@ public class MapWindowApp extends JFrame {
     void deleteButtonActionListener()
     {
         currentMap = null;
+        setTextFieldsNull();
     }
 
     void authorButtonActionListener()
@@ -319,6 +320,24 @@ public class MapWindowApp extends JFrame {
     {
         System.exit(0);
     }
+
+    static void setTextFields(Map map)
+    {
+        mapNameTextField.setText(map.getName());
+        mapWidthTextField.setText(String.valueOf(map.getWidth()));
+        mapHeightTextField.setText(String.valueOf(map.getHeight()));
+        mapScaleTextField.setText(String.valueOf(map.getScale()));
+        mapPublisherTextField.setText(String.valueOf(map.getPublisher()));
+        mapPrizeTextField.setText(String.valueOf(map.getPrize()));
+    }
+    static void setTextFieldsNull()
+    {
+        mapNameTextField.setText("");
+        mapWidthTextField.setText("");
+        mapHeightTextField.setText("");
+        mapScaleTextField.setText("");
+        mapPublisherTextField.setText("");
+        mapPrizeTextField.setText("");
+    }
+
 }
-
-

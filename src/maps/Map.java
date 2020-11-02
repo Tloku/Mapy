@@ -59,7 +59,7 @@ class MapException extends Exception {
     }
 }
 
-public class Map
+public class Map implements Serializable
 {
     private String mapName;
     private Scale mapScale;
@@ -220,6 +220,7 @@ public class Map
             map.setScale(txt[4]);
             map.setPublisher(txt[5]);
             reader.close();
+            MapWindowApp.setTextFields(map);
             return map;
         } catch (IOException e) {
             throw new MapException("Nie udało się odczytać danych z pliku.");
@@ -241,8 +242,9 @@ public class Map
     public static Map readFromBinaryFile() {
         Map map = null;
         try{
-            ObjectInputStream inS = new ObjectInputStream(new FileInputStream("PlikBinarny.txt"));
+            ObjectInputStream inS = new ObjectInputStream(new FileInputStream("PlikBinarny.bin"));
             map = (Map) inS.readObject();
+            MapWindowApp.setTextFields(map);
             inS.close();
         }
         catch(IOException | ClassNotFoundException e)
@@ -255,7 +257,7 @@ public class Map
     public static void printToBinaryFile(Map map)
     {
         try {
-            ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream("PlikBinarny.txt"));
+            ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream("PlikBinarny.bin"));
             outS.writeObject(map);
             outS.close();
         } catch (IOException e) {

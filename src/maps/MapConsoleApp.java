@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Data: październik 2020 r.
  */
 
-public class MapConsoleApp implements Serializable {
+public class MapConsoleApp {
 
     public static final String AUTHOR =
             "Imię: Dominik \n" +
