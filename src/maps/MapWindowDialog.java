@@ -141,6 +141,17 @@ public class MapWindowDialog extends JDialog
             }
             map.setScale((Scale) mapScaleJBox.getSelectedItem());
             map.setPublisher((Publisher) mapPublisherJBox.getSelectedItem());
+
+            MapWindowApp.currentMap = map;
+
+            MapWindowApp.mapNameTextField.setText(map.getName());
+            MapWindowApp.mapWidthTextField.setText(String.valueOf(map.getWidth()));
+            MapWindowApp.mapHeightTextField.setText(String.valueOf(map.getHeight()));
+            MapWindowApp.mapScaleTextField.setText(String.valueOf(map.getScale()));
+            MapWindowApp.mapPublisherTextField.setText(String.valueOf(map.getPublisher()));
+            MapWindowApp.mapPrizeTextField.setText(String.valueOf(map.getPrize()));
+
+            this.setVisible(false);
         }
         catch(MapException ex)
         {

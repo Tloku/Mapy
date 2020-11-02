@@ -42,12 +42,12 @@ public class MapWindowApp extends JFrame {
     JLabel mapPublisherLabel = new JLabel("Wydawca");
     JLabel mapPrizeLabel = new JLabel("Cena");
 
-    JTextField mapNameTextField = new JTextField(10);
-    JTextField mapWidthTextField = new JTextField(10);
-    JTextField mapHeightTextField = new JTextField(10);
-    JTextField mapScaleTextField = new JTextField(10);
-    JTextField mapPublisherTextField = new JTextField(10);
-    JTextField mapPrizeTextField = new JTextField(10);
+    static JTextField mapNameTextField = new JTextField(10);
+    static JTextField mapWidthTextField = new JTextField(10);
+    static JTextField mapHeightTextField = new JTextField(10);
+    static JTextField mapScaleTextField = new JTextField(10);
+    static JTextField mapPublisherTextField = new JTextField(10);
+    static JTextField mapPrizeTextField = new JTextField(10);
 
     JMenuBar menuBar = new JMenuBar();
     JMenu mapBar = new JMenu("Mapy");
@@ -248,15 +248,15 @@ public class MapWindowApp extends JFrame {
 
     void newButtonActionListener()
     {
-        var app = this;
-        currentMap = MapWindowDialog.createNewMap(app);
+        currentMap = MapWindowDialog.createNewMap(this);
     }
 
     void modifyButtonActionListener()
     {
-        var app = this;
-        if (currentMap == null) JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
-        MapWindowDialog.changeMapData(app, currentMap);
+        if (currentMap == null)
+            JOptionPane.showMessageDialog(rootPane, "Nie ma obiektu do zmodyfikowania");
+        else
+            MapWindowDialog.changeMapData(this, currentMap);
     }
 
    void saveButtonActionListener(){
